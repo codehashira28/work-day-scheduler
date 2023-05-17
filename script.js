@@ -25,15 +25,10 @@ $(function () {
 
   for(slot of timeblocks) {
     var entry = $('#' + slot.id);
-    if(currentHour < slot.id.split('-')[1]) {
-      entry.addClass('future');
-    } else if(currentHour > slot.id.split('-')[1]) {
-      entry.addClass('past');
-    } else {
-      entry.addClass('present');
-    }
+    currentHour < slot.id.split('-')[1] ? entry.addClass('future')
+    : currentHour > slot.id.split('-')[1] ?  entry.addClass('past') 
+    : entry.addClass('present'); 
   }
-  ;
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
