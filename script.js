@@ -2,7 +2,7 @@ $(function () {
   // code to add a listener for click events on the save button. This code uses
   // the id in the containing time-block as a key to save the user input in
   // local storage.
-  
+
   var timeblocks = $('.time-block');
 
   for(var timeblock of timeblocks) {
@@ -21,11 +21,10 @@ $(function () {
   // current hour in 24-hour time.
 
   var currentHour = Number(dayjs().format('HH'));
-  var timeblocks = $('.time-block');
 
   for(var slot of timeblocks) {
     var entry = $('#' + slot.id);
-    currentHour < slot.id.split('-')[1] ? entry.addClass('future')
+    currentHour < slot.id.split('-')[1] ? entry.addClass('future')  // code to use 'split' method inspired by instructor
     : currentHour > slot.id.split('-')[1] ?  entry.addClass('past') 
     : entry.addClass('present'); 
   }
