@@ -8,7 +8,7 @@ $(function () {
   for(var timeblock of timeblocks) {
     var slot = $('#' + timeblock.id);
     slot.children('button').on('click', function(event){
-      var currentId = this.parentNode.id;
+      var currentId = $(this).parent().attr('id');
       var todo = $('#' + currentId).children('textarea').val();
       localStorage.setItem(currentId, todo);
     });
@@ -24,8 +24,8 @@ $(function () {
 
   for(var slot of timeblocks) {
     var entry = $('#' + slot.id);
-    currentHour < slot.id.split('-')[1] ? entry.addClass('future')  // code to use 'split' method inspired by instructor
-    : currentHour > slot.id.split('-')[1] ?  entry.addClass('past') 
+    currentHour < entry.attr('id').split('-')[1] ? entry.addClass('future')  // code to use 'split' method inspired by instructor
+    : currentHour > entry.attr('id').split('-')[1] ?  entry.addClass('past') 
     : entry.addClass('present'); 
   }
 
@@ -34,7 +34,7 @@ $(function () {
   // attribute of each time-block.
   var entries = $('textarea');
   for(var entry of entries) {
-    var key = entry.parentNode.id;
+    var key = $(entry).parent().attr('id');
     $('#' + key).children('textarea').val(localStorage.getItem(key));
   }
 
